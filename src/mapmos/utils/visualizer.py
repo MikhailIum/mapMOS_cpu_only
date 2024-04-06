@@ -122,7 +122,7 @@ class MapMOSVisualizer(StubVisualizer):
         self.vis.create_window(window_name=w_name, width=1920, height=1080)
         self.vis.add_geometry(self.scan)
         self.vis.add_geometry(self.map)
-        self._set_black_background(self.vis)
+        #self._set_black_background(self.vis)
         self.vis.get_render_option().point_size = 1
         print(
             f"{w_name} initialized. Press:\n"
