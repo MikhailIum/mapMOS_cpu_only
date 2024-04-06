@@ -71,7 +71,7 @@ class MapMOSPipeline(OdometryPipeline):
         self.model = MapMOSNet(self.config.mos.voxel_size_mos)
 
         self.model.load_state_dict(state_dict)
-        self.model.cuda().eval().freeze()
+        #self.model.cuda().eval().freeze()
 
         self.odometry = Odometry(self.config.data, self.config.odometry)
         self.belief = VoxelHashMap(
