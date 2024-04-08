@@ -131,12 +131,12 @@ class MapMOSPipeline(OdometryPipeline):
             min_range_mos = self.config.mos.min_range_mos
             max_range_mos = self.config.mos.max_range_mos
             scan_mask = self._preprocess(scan_points, min_range_mos, max_range_mos)
-            scan_points = torch.tensor(scan_points[scan_mask], dtype=torch.float32, device="cuda")
+            scan_points = torch.tensor(scan_points[scan_mask], dtype=torch.float32, device="cpu")
             gt_labels = gt_labels[scan_mask]
 
             map_mask = self._preprocess(map_points, min_range_mos, max_range_mos)
-            map_points = torch.tensor(map_points[map_mask], dtype=torch.float32, device="cuda")
-            map_indices = torch.tensor(map_indices[map_mask], dtype=torch.float32, device="cuda")
+            map_points = torch.tensor(map_points[map_mask], dtype=torch.float32, device="cpu")
+            map_indices = torch.tensor(map_indices[map_mask], dtype=torch.float32, device="cpu")
 
             start_time = time.perf_counter_ns()
             pred_logits_scan, pred_logits_map = self.model.predict(
